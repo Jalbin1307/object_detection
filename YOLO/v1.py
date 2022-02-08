@@ -6,23 +6,19 @@ import os, xmltodict
 import os.path as pth
 from PIL import Image
 
-
 import matplotlib.pyplot as plt
-
-
 
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 annot_f = './ano/000555.xml'
 image_f = './img/000555.jpg'
 
-
 classes = ['person', 'bird', 'cat', 'cow', 'dog', 'horse', 
            'sheep', 'aeroplane', 'bicycle', 'boat', 'bus', 'car', 
            'motorbike', 'train', 'bottle', 'chair', 'dining table', 
            'potted plant', 'sofa', 'tv/monitor' ]
 
-
+# Anotation file
 f = open(annot_f)
 info = xmltodict.parse(f.read())['annotation']
 image_id = info['filename']
@@ -42,8 +38,8 @@ for obj in box_objects:
 bboxs = np.asarray(bboxs, dtype=np.float64)
 
 try:
-    bboxs[:, [0,2]] /= w
-    bboxs[:, [1,3]] /= h
+    bboxs[:, [0,2]] /= w    # xmin, xmax
+    bboxs[:, [1,3]] /= h    # ymin, ymax
 except : pass
 if bboxs.shape[0]:
     result.append({'image_id':image_id, 'image_size':image_size, 'bboxs':bboxs, 'labels':labels})
