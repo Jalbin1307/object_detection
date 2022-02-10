@@ -1,3 +1,4 @@
+from matplotlib import patches
 import torch
 
 import numpy as np
@@ -44,10 +45,33 @@ except : pass
 if bboxs.shape[0]:
     result.append({'image_id':image_id, 'image_size':image_size, 'bboxs':bboxs, 'labels':labels})
 
-print(result)
+result = result[0]
+
+w = 448
+h = 448
+
+im = np.array(Image.open(image_f).convert('RGB').resize((w,h)), dtype=np.uint8)
+
+fig, ax = plt.subplots(1, figsize=(7,7))
 
 
-# image = Image.open(image_f)
+bb = result['bboxs']
+la = result['labels']
+
+ax.imshow(im)
+
+for b, l in zip(bb, la):
+    rect = patches.Rectangle((b[0]*w, b[1]*h), (b[2]-b[0])*w, (b[3]-b[1])*h, linewidth=1, edgecolor='r',facecolor='none')
+
+    ax.add_patch(rect)
+    props = dict(boxstyle='round', facecolor='red', alpha=0.9)
+    plt.text(b[0]*w, b[1]*h, classes[l], fontsize=10, color='white', bbox=props)
+
+plt.axis('off')    
+plt.show()
+
+
+
 # plt.imshow(image)
 # plt.show()
 
