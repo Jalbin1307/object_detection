@@ -47,6 +47,7 @@ if bboxs.shape[0]:
 
 result = result[0]
 
+# Bounding box 
 w = 448
 h = 448
 
@@ -69,9 +70,4 @@ for b, l in zip(bb, la):
 
 plt.axis('off')    
 plt.show()
-
-
-
-# plt.imshow(image)
-# plt.show()
 
