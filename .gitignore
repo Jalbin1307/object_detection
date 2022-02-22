@@ -12,6 +12,9 @@ data/
 # C extensions
 *.so
 
+#pytorch
+*.tar
+
 # Distribution / packaging
 .Python
 build/
