@@ -15,6 +15,9 @@ data/
 #pytorch
 *.tar
 
+#Dataset
+PASCAL_VOC/
+
 # Distribution / packaging
 .Python
 build/
