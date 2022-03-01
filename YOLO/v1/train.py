@@ -31,11 +31,12 @@ WEIGHT_DECAY = 0
 EPOCHS = 1000
 NUM_WORKERS = 2
 PIN_MEMORY = True
-LOAD_MODEL = True  # False 
+LOAD_MODEL = False  # False 
 LOAD_MODEL_FILE = "overfit.pth.tar"
-IMG_DIR = r"C:\Users\hong\github_clone\object_detection\YOLO\v1\data\images"
-LABEL_DIR = r"C:\Users\hong\github_clone\object_detection\YOLO\v1\data\labels"
-
+IMG_DIR = r".\YOLO\v1\data\images"
+LABEL_DIR = r".\YOLO\v1\data\labels"
+# IMG_DIR = r"C:\Users\hong\github_clone\object_detection\YOLO\v1\data\images"
+# LABEL_DIR = r"C:\Users\hong\github_clone\object_detection\YOLO\v1\data\labels"
 
 class Compose(object):
     def __init__(self, transforms):
@@ -81,14 +82,14 @@ def main():
         load_checkpoint(torch.load(LOAD_MODEL_FILE), model, optimizer)
 
     train_dataset = VOCDataset(
-        r"C:\Users\hong\github_clone\object_detection\YOLO\v1\data\100examples.csv",
+        r".\YOLO\v1\data\100examples.csv",
         transform=transform,
         img_dir=IMG_DIR,
         label_dir=LABEL_DIR,
     )
 
     test_dataset = VOCDataset(
-        r"C:\Users\hong\github_clone\object_detection\YOLO\v1\data\test.csv", transform=transform, img_dir=IMG_DIR, label_dir=LABEL_DIR,
+        r".\YOLO\v1\data\test.csv", transform=transform, img_dir=IMG_DIR, label_dir=LABEL_DIR,
     )
 
     train_loader = DataLoader(
