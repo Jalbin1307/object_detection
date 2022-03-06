@@ -1,4 +1,3 @@
-from charset_normalizer import detect
 from sklearn.metrics import recall_score
 import torch
 from collections import Counter
