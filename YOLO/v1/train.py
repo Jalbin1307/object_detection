@@ -22,21 +22,21 @@ os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 seed = 123
 torch.manual_seed(seed)
+
 # pip install torchvision==0.10.1+cu102 -f https://download.pytorch.org/whl/cu102/torch_stable.html
+
 # Hyperparameters etc. 
 LEARNING_RATE = 2e-5
 DEVICE = "cuda" if torch.cuda.is_available else "cpu"
-BATCH_SIZE = 4 # 64 in original paper but I don't have that much vram, grad accum?
+BATCH_SIZE = 4 # 64 in original paper
 WEIGHT_DECAY = 0
 EPOCHS = 1000
 NUM_WORKERS = 2
 PIN_MEMORY = True
-LOAD_MODEL = False  # False 
+LOAD_MODEL = False  # True / False 
 LOAD_MODEL_FILE = "overfit.pth.tar"
 IMG_DIR = r".\YOLO\v1\data\images"
 LABEL_DIR = r".\YOLO\v1\data\labels"
-# IMG_DIR = r"C:\Users\hong\github_clone\object_detection\YOLO\v1\data\images"
-# LABEL_DIR = r"C:\Users\hong\github_clone\object_detection\YOLO\v1\data\labels"
 
 class Compose(object):
     def __init__(self, transforms):
