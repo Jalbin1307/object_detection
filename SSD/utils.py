@@ -65,7 +65,7 @@ def create_data_lists(voc07_path, voc12_path, output_folder):
     for path in [voc07_path, voc12_path]:
 
         # Find IDs of images in training data
-        with open(os.path.join(path, 'ImageSets/Main/trainval.txt')) as f:
+        with open(os.path.join(path, 'ImageSets\\Main\\trainval.txt')) as f:
             ids = f.read().splitlines()
 
         for id in ids:
@@ -96,7 +96,7 @@ def create_data_lists(voc07_path, voc12_path, output_folder):
     n_objects = 0
 
     # Find IDs of images in validation data
-    with open(os.path.join(voc07_path, 'ImageSets/Main/test.txt')) as f:
+    with open(os.path.join(voc07_path, 'ImageSets\\Main\\test.txt')) as f:
         ids = f.read().splitlines()
 
     for id in ids:
