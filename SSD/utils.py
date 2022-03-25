@@ -487,6 +487,7 @@ def flip(image, boxes):
     :param boxes: bounding boxes in boundary coordinates, a tensor of dimensions (n_objects, 4)
     :return: flipped image, updated bounding box coordinates
     """
+    
     # Flip image
     new_image = FT.hflip(image)
 
