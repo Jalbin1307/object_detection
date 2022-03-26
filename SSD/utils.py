@@ -491,6 +491,7 @@ def flip(image, boxes):
     # Flip image
     new_image = FT.hflip(image)
 
+
     # Flip boxes
     new_boxes = boxes
     new_boxes[:, 0] = image.width - boxes[:, 0] - 1
