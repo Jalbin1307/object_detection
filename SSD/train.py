@@ -137,6 +137,7 @@ def train(train_loader, model, criterion, optimizer, epoch):
 
     start = time.time()
 
+
     # Batches
     for i, (images, boxes, labels, _) in enumerate(train_loader):
         data_time.update(time.time() - start)
